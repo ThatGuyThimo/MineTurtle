@@ -7,34 +7,42 @@
     <title>Document</title>    
     <link rel="stylesheet" href="style.css">
     <script src="index.js" type="module"></script>
+    <script src="treejs.js" type="module"></script>
+    <!-- <script src="webGPU.js" type="module"></script> -->
 </head>
 <body id="box">
-  <button id="detect">
-    detect
-  </button>
-  <button id="forwards">
-    forwards
-  </button>
-  <button id="backwards">
-    backwards
-  </button>
-  <button id="moveup">
-    moveup
-  </button>
-  <button id="movedown">
-    movedown
-  </button>
-  <button id="turnleft">
-    turnleft
-  </button>
-  <button id="turnright">
-    turnright
-  </button>
-  <button id="turn180">
-    turn180
-  </button>
-  <button id="refuel">
-    refuel
-  </button>
+  <div>
+    <button id="detect">
+      detect
+    </button>
+    <button id="forwards">
+      forwards
+    </button>
+    <button id="backwards">
+      backwards
+    </button>
+    <button id="moveup">
+      moveup
+    </button>
+    <button id="movedown">
+      movedown
+    </button>
+    <button id="turnleft">
+      turnleft
+    </button>
+    <button id="turnright">
+      turnright
+    </button>
+    <button id="turn180">
+      turn180
+    </button>
+    <button id="refuel">
+      refuel
+    </button>
+  </div>
+  <div>
+    <canvas id="WorldRender" width="512" height="512"></canvas>
+  </div>
+
 </body>
 </html>

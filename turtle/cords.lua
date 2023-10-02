@@ -63,8 +63,9 @@ function UpdateCords(direction)
         cords["y"] = cords["y"] -1
     end
 
-    GetCurrentCords()
+    -- GetCurrentCords()
     UpdateFile()
+    SendPos()
 
 end
 
@@ -87,6 +88,7 @@ function UpdateFacing(turnDirection)
     end
 
     UpdateFile()
+    SendPos()
     print(directions[cords["facing"]])
 end
 
@@ -99,8 +101,9 @@ function UpdateFile()
 end
 
 function GetCurrentCords()
-    print("facing", cords["facing"])
-    print("x", cords["x"])
-    print("y", cords["y"])
-    print("z", cords["z"])
+    -- print("facing", cords["facing"])
+    -- print("x", cords["x"])
+    -- print("y", cords["y"])
+    -- print("z", cords["z"])
+    return cords
 end

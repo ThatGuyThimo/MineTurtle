@@ -2,6 +2,8 @@ print "starting websocket"
 
 require("test")
 require("movement")
+require("general")
+ComName = setName()
 require("cords")
 
 local URL = "ws://localhost:8080"
@@ -13,7 +15,7 @@ ws, err = http.websocket(URL)
 function SendPos()
 
     local cords = GetCurrentCords()
-    ws.send(string.format( '{ "client": "turtle", "id": %d, "type": "position", "facing": %d, "cords": {"x": %d,"y": %d, "z": %d}}', ComID, cords.facing, cords.x, cords.y, cords.z ))
+    ws.send(string.format( '{ "client": "turtle", "id": %d, "name": "%s", "type": "position", "facing": %d, "cords": {"x": %d,"y": %d, "z": %d}}', ComID, ComName, cords.facing, cords.x, cords.y, cords.z ))
 end
 
 local event, url, message

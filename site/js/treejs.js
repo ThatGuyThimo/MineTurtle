@@ -105,7 +105,6 @@ function slectedTurtleHighlighter(id) {
     if(lastselected != undefined) {
         turtles[lastselected][1].material.color = new THREE.Color(0xffffff)
     }
-    console.log(turtles[id][1].material.color = new THREE.Color(0xff0000))
     turtles[id][1].material.color = new THREE.Color(0xff0000)
     lastselected = id
 }

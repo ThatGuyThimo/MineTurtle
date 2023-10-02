@@ -1,11 +1,11 @@
 import {addBlock, addTurtle, slectedTurtleHighlighter, turnTurtle} from "./treejs";
+// import {dbAddTurtle} from "./database"
 (async function() {
     
     const turtles = [] 
     const ws = await connectToServer();
     let defaultTurtle = false
     let selectedTurtle
-    // let connected = ws.
 
     ws.onmessage = (message) => {
         message = JSON.parse(message.data);
@@ -16,11 +16,11 @@ import {addBlock, addTurtle, slectedTurtleHighlighter, turnTurtle} from "./treej
                 turtles[message.id] = message.id
                 let option = document.createElement('option');
                 option.value = message.id
-                option.text = message.id
-                if(!defaultTurtle) {
-                    defaultTurtle = true
-                    selectedTurtle = message.id
-                }
+                option.text = message.name
+                // if(!defaultTurtle) {
+                //     defaultTurtle = true
+                //     selectedTurtle = message.id
+                // }
 
                 selectorS.appendChild(option)
             }
@@ -28,6 +28,11 @@ import {addBlock, addTurtle, slectedTurtleHighlighter, turnTurtle} from "./treej
             if(message.type == "position") {
                 addTurtle(message.cords.x, message.cords.y, message.cords.z, message.facing, message.id)
                 turnTurtle(message.facing, message.id)
+                if(!defaultTurtle) {
+                    defaultTurtle = true
+                    selectedTurtle = message.id
+                    slectedTurtleHighlighter(message.id)
+                }
             }
 
             if (message.type == "block") {

@@ -12,6 +12,7 @@ if fs.exists(path) then
     cords["x"] = data.x
     cords["y"] = data.y
     cords["z"] = data.z
+    cords["name"] = data.name
     file.close()
 else
     ws.send(string.format('"client": "turtle", "type": "error", "message": "file: data.json not found!"'))

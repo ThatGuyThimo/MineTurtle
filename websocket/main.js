@@ -25,34 +25,9 @@ wss.on('connection', function connection(ws) {
     if(message.client == "controller") {
 
       console.log(`${message.client}: ${message.message}`)
+      console.log(message)
 
-      if(message.message == "detect") {
-        wss.broadcast(JSON.stringify({"client": "controller", "message": "detect"}))
-      }
-      if(message.message == "forwards") {
-        wss.broadcast(JSON.stringify({"client": "controller", "message": "forwards"}))
-      }
-      if(message.message == "backwards") {
-        wss.broadcast(JSON.stringify({"client": "controller", "message": "backwards"}))
-      }
-      if(message.message == "turnleft") {
-        wss.broadcast(JSON.stringify({"client": "controller", "message": "turnleft"}))
-      }
-      if(message.message == "turnright") {
-        wss.broadcast(JSON.stringify({"client": "controller", "message": "turnright"}))
-      }
-      if(message.message == "turn180") {
-        wss.broadcast(JSON.stringify({"client": "controller", "message": "turn180"}))
-      }
-      if(message.message == "refuel") {
-        wss.broadcast(JSON.stringify({"client": "controller", "message": "refuel"}))
-      }
-      if(message.message == "moveup") {
-        wss.broadcast(JSON.stringify({"client": "controller", "message": "moveup"}))
-      }
-      if(message.message == "movedown") {
-        wss.broadcast(JSON.stringify({"client": "controller", "message": "movedown"}))
-      }
+      wss.broadcast(JSON.stringify(message))
     }
 
 
@@ -65,7 +40,12 @@ wss.on('connection', function connection(ws) {
         }
       }
       if(message.type == "block") {
-        console.log(`turtle: block: ${message.block}`)
+        console.log(`turtle:${message.id} block: ${message.block}`)
+        wss.broadcast(JSON.stringify(message))
+      }
+      if(message.type == "position") {
+        console.log(`turtle:${message.id} movedTo: x${message.cords.x} y${message.cords.y} z${message.cords.z} facing: ${message.facing}`)
+        console.log(message)
         wss.broadcast(JSON.stringify(message))
       }
 
